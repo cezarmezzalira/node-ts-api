@@ -1,7 +1,7 @@
-import { Server } from "@overnightjs/core";
-import { ForecastController } from "@src/controllers/forecast";
-import express, { Application } from "express";
-import "./util/module-alias";
+import { Server } from '@overnightjs/core';
+import { ForecastController } from '@src/controllers/forecast';
+import express, { Application } from 'express';
+import './util/module-alias';
 
 export class SetupServer extends Server {
   constructor(private port = 3000) {
