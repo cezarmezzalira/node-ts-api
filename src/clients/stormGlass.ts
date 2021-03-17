@@ -1,4 +1,5 @@
 import { InternalError } from '@src/util/errors/internal-error';
+import { AxiosStatic } from 'axios';
 
 export interface StormGlassPointSource {
   [key: string]: number;
