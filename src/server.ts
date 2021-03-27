@@ -3,6 +3,7 @@ import express, { Application } from 'express';
 import './util/module-alias';
 import { ForecastController } from './controllers/forecast';
 import { BeachesController } from './controllers/beaches';
+import { UsersController } from './controllers/users';
 import * as database from '@src/database';
 
 export class SetupServer extends Server {
@@ -24,7 +25,12 @@ export class SetupServer extends Server {
   private setupControllers(): void {
     const forecastController = new ForecastController();
     const beachesController = new BeachesController();
-    this.addControllers([forecastController, beachesController]);
+    const usersController = new UsersController();
+    this.addControllers([
+      forecastController,
+      beachesController,
+      usersController,
+    ]);
   }
   public getApp(): Application {
     return this.app;
