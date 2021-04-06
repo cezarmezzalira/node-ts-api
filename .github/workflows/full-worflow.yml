@@ -33,3 +33,16 @@ jobs:
 
     - name: Run all tests
       run: yarn test
+
+    - shell: bash
+      if: github.ref == 'refs/heads/main'
+      name: Create SSH deployment key
+      env:
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: ./scripts/deploy.sh
+
+    - name: Deployment
+      if: github.ref == 'refs/heads/main'
+      run: git remote add umbler https://kamino.deploy.umbler.com/koxr498k/surf-api-codeea-dev.git && git push umbler master
+      env:
+        CI: true
